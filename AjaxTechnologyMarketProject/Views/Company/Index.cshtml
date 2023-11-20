@@ -1,0 +1,68 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<button class="btn btn-sm btn-primary m-2" id="btnAddCompany">Firma Ekle </button>
+
+<table class="table table-bordered">
+    <thead>
+        <tr class="text-center">
+            <th>Id</th>
+            <th>Şirket Adı</th>
+            <th>Adres</th>
+            <th>Telefon</th>
+            <th>Merkez</th>
+           
+        </tr>
+    </thead>
+    <tbody class="text-center" id="table_data"></tbody>
+</table>
+<div class="modal fade-modal" id="CompanyModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="text-info modal-title" id="companyHeading">Firma Ekle</h1>
+                <button class="close text-danger" data-dismiss="modal" onclick="HideModalPopUp();">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form method="post">
+                    <div class="form-group" id="comId">
+                        <label>Id</label>
+                        <input type="text" class="form-control" id="CompanyId" disabled="disabled" />
+                    </div>
+                    <div class="form-group">
+                        <label>Şirket Adı</label>
+                        <input type="text" placeholder="Şirket adını giriniz" class="form-control" id="CompanyName" autocomplete="off" />
+                    </div>
+                    <div class="form-group">
+                        <label>Şirket Adresi</label>
+                        <input type="text" placeholder="Adres giriniz" class="form-control" id="Address" autocomplete="off" />
+                    </div>
+                    <div class="form-group">
+                        <label>Telefon</label>
+                        <input type="text" placeholder="Şirket telefonu giriniz" class="form-control" id="Phone" autocomplete="off" />
+                    </div>
+                    <div class="form-group">
+                        <label>Şirketin Merkezi</label>
+                        <input type="text" placeholder="Şirketin merkezini giriniz" class="form-control" id="Center" autocomplete="off" />
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" onclick="AddCompany();" id="AddCompany">Kaydet</button>
+                <button class="btn btn-warning" onclick="UpdateCompany();" style="display:none" id="btnUpdate">Güncelle</button>
+                <button class="btn btn-danger btn-default" data-dismiss="modal" onclick="HideModalPopUp();">Kapat</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div>
+    <input type="hidden" id="urlCompanyData" value="@Url.Action("CompanyList","Company")" />
+</div>
+
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/js/companym.js"></script>
+

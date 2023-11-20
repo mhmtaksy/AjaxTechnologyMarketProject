@@ -1,0 +1,73 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<button class="btn btn-sm btn-primary m-2" id="btnAddManager">Çalışan Ekle </button>
+
+<table class="table table-bordered">
+    <thead>
+        <tr class="text-center">
+            <th>Id</th>
+            <th>İsim</th>        
+            <th>Telefon</th>
+            <th>Adres</th>
+            <th>Uzmanlık</th>
+        </tr>
+    </thead>
+    <tbody class="text-center" id="table_data"></tbody>
+</table>
+
+<div class="modal fade-modal" id="ManagerModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="text-info modal-title" id="managerHeading">Yönetici Ekleme Sayfası</h1>
+                <button class="close text-danger" data-dismiss="modal" onclick="HideModalPopUp();">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form method="post">
+                    <div class="form-group" id="manId">
+                        <label>Id</label>
+                        <input type="text" class="form-control" id="ManagerId" disabled="disabled" />
+                    </div>
+                    <div class="form-group">
+                        <label>Yönetici Adı</label>
+                        <input type="text" placeholder="Yönetici Adını giriniz" class="form-control" id="Name" autocomplete="off" />
+                    </div>
+                    <div class="form-group">
+                        <label>Telefon</label>
+                        <input type="text" placeholder="Telefon giriniz" class="form-control" id="Phone" autocomplete="off" />
+                    </div>
+                    <div class="form-group">
+                        <label>Adres</label>
+                        <input type="text" placeholder="Adres Giriniz" class="form-control" id="Address" autocomplete="off" />
+                    </div>
+                    <div class="form-group">
+                        <label>Uzmanlık</label>
+                        <input type="text" placeholder="Uzmanlık giriniz" class="form-control" id="Expertise" autocomplete="off" />
+                    </div>
+                   
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" onclick="AddManager();" id="AddManager">Kaydet</button>
+                <button class="btn btn-warning" onclick="UpdateManager();" style="display:none" id="btnUpdate">Güncelle</button>
+                <button class="btn btn-danger btn-default" data-dismiss="modal" onclick="HideModalPopUp();">Kapat</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div>
+    <input type="hidden" id="urlManagerData" value="@Url.Action("ManagerList","Manager")" />
+</div>
+
+
+
+
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/js/managerm.js"></script>
